@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience - Data Scientist & ML Engineer</title>
+    <!-- Link to main stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Link to component-specific stylesheet -->
+    <link rel="stylesheet" href="css/components/experience.css">
+    <!-- Link to header and footer stylesheets -->
+    <link rel="stylesheet" href="css/components/header.css">
+    <link rel="stylesheet" href="css/components/footer.css">
+</head>
+<body>
+    <!-- Header Include -->
+    <div id="header-container"></div>
+
+    <main>
+        <div class="container">
+            <div class="section-title">
+                <h2>My Experience</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="timeline">
+                <!-- Experience 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-date">2025 - Present</span>
+                        <h3>Senior Data Scientist</h3>
+                        <h4>Calsoft Inc</h4>
+                        <p>Led a team of data scientists in developing predictive models for customer behavior. Implemented ML pipeline that increased marketing ROI by 40%. Collaborated with cross-functional teams to integrate data solutions.</p>
+                    </div>
+                </div>
+
+                <!-- Experience 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-date">2013 - 2025</span>
+                        <h3>Data Scientist</h3>
+                        <h4>Jio Platforms</h4>
+                        <p>Designed and implemented machine learning models for fraud detection, reducing fraudulent transactions by 65%. Created interactive dashboards for business stakeholders using Tableau and Power BI.</p>
+                    </div>
+                </div>
+
+                <!-- Experience 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-date">2021 - 2022</span>
+                        <h3>Senior Engineer</h3>
+                        <h4>L&T Techology Services</h4>
+                        <p>Conducted data analysis to identify trends and opportunities. Created automated reports that saved 15 hours of manual work weekly. Collaborated with marketing team to optimize campaign performance.</p>
+                    </div>
+                </div>
+
+                <!-- Experience 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-date">2020 - 2021</span>
+                        <h3>Engineer</h3>
+                        <h4>TECOSIM GmbH</h4>
+                        <p>Conducted data analysis to identify trends and opportunities. Created automated reports that saved 15 hours of manual work weekly. Collaborated with marketing team to optimize campaign performance.</p>
+                    </div>
+                </div>
+
+                <!-- Experience 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-date">2017 - 2020</span>
+                        <h3>CAE Engineer</h3>
+                        <h4>Equilibrium Solutions</h4>
+                        <p>Conducted data analysis to identify trends and opportunities. Created automated reports that saved 15 hours of manual work weekly. Collaborated with marketing team to optimize campaign performance.</p>
+                    </div>
+                </div>
+
+
+
+                <!-- Education -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-date">2022 - 2024</span>
+                        <h3>Post Graguate in Data Science</h3>
+                        <h4>Jio Institute</h4>
+                        <p>Graduated with honors. Thesis on "Optimizing Neural Networks for Time Series Prediction" achieved department recognition. Participated in multiple hackathons and data science competitions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Include -->
+    <div id="footer-container"></div>
+
+    <!-- JavaScript -->
+    <script src="js/app.js"></script>
+    <script>
+        // Load header and footer components
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-container').innerHTML = data;
+                });
+            
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                });
+        });
+    </script>
+</body>
+</html>

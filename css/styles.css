@@ -1,0 +1,89 @@
+/* Global Styles */
+
+@import './components/header.css';
+@import './components/hero.css';
+@import './components/about.css';
+@import './components/projects.css';
+@import './components/experience.css';
+@import './components/contact.css';
+@import './components/footer.css';
+
+:root {
+    --primary-color: #4a6fa5;
+    --secondary-color: #166088;
+    --accent-color: #7db0de;
+    --background-color: #f8f9fa;
+    --text-color: #212529;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+section {
+    padding: 80px 0;
+}
+
+h1, h2, h3 {
+    font-weight: 600;
+}
+
+a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background: var(--secondary-color);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.section-title .underline {
+    height: 4px;
+    width: 60px;
+    background: var(--accent-color);
+    margin: 0 auto;
+}
