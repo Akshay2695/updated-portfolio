@@ -1,53 +1,257 @@
+/* Data Science focused About section */
 .about-content {
     display: flex;
     align-items: center;
-    gap: 50px;
+    gap: 3rem;
+    position: relative;
+    z-index: 2;
 }
 
+/* Cool image frame with gradient border */
 .about-img {
     flex: 1;
+    position: relative;
+    border-radius: var(--radius-md);
+    padding: 4px;
+    background: linear-gradient(135deg, var(--secondary-color), var(--tertiary-color));
+    box-shadow: var(--shadow-md);
 }
 
 .about-img img {
     width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: calc(var(--radius-md) - 2px);
+    display: block;
+    transition: transform var(--transition-normal);
+}
+
+.about-img:hover img {
+    transform: scale(1.02);
+}
+
+/* Data science decorative elements */
+.about-img::before {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: -15px;
+    right: -15px;
+    background-image: radial-gradient(var(--secondary-color) 2px, transparent 2px);
+    background-size: 10px 10px;
+    opacity: 0.6;
+    z-index: -1;
+}
+
+.about-img::after {
+    content: '';
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    bottom: -20px;
+    left: -20px;
+    background-image: radial-gradient(var(--tertiary-color) 2px, transparent 2px);
+    background-size: 15px 15px;
+    opacity: 0.5;
+    z-index: -1;
 }
 
 .about-text {
     flex: 1;
 }
 
+/* Improved heading visibility */
 .about-text h3 {
     font-size: 1.8rem;
-    margin-bottom: 20px;
-    color: var(--secondary-color);
+    margin-bottom: var(--space-md);
+    color: var(--primary-color);
+    position: relative;
+    display: inline-block;
+    font-weight: 700;
+    /* Added text shadow for better visibility */
+    text-shadow: 0 1px 1px rgba(0,0,0,0.05);
 }
 
+.about-text h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(to right, var(--secondary-color), var(--tertiary-color));
+    border-radius: var(--radius-sm);
+}
+
+/* Improved paragraph text visibility */
+.about-text p {
+    margin-bottom: var(--space-md);
+    color: var(--text-color);
+    line-height: 1.7;
+    font-size: 1.05rem;
+    /* Slightly increased letter spacing for readability */
+    letter-spacing: 0.01em;
+}
+
+/* Skills section with data visualization style */
 .skills {
-    margin-top: 30px;
+    margin-top: var(--space-xl);
 }
 
+/* Improved skills heading visibility */
 .skills h4 {
-    margin-bottom: 15px;
+    margin-bottom: var(--space-md);
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    position: relative;
+    display: inline-block;
+    font-weight: 600;
+    /* Added text shadow for better visibility */
+    text-shadow: 0 1px 1px rgba(0,0,0,0.05);
+}
+
+.skills h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 30px;
+    height: 2px;
+    background: linear-gradient(to right, var(--secondary-color), var(--tertiary-color));
+    border-radius: var(--radius-sm);
 }
 
 .skills-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: var(--space-sm);
 }
 
+/* Modern skill tags with gradient hover */
 .skill {
-    background: var(--accent-color);
-    color: white;
+    background-color: rgba(52, 152, 219, 0.1);
+    border: 1px solid rgba(52, 152, 219, 0.2);
+    color: var(--primary-color);
     padding: 8px 15px;
-    border-radius: 20px;
+    border-radius: var(--radius-full);
     font-size: 0.9rem;
+    font-weight: 500;
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+    /* Added text shadow for better visibility on hover */
+    text-shadow: 0 0 0 transparent;
 }
 
+.skill:hover {
+    background: linear-gradient(135deg, var(--secondary-color), var(--tertiary-color));
+    color: white;
+    border-color: transparent;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+    text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+}
+
+/* Categorized skills - optional enhancement */
+.skill[data-category="ml"] {
+    border-color: rgba(52, 152, 219, 0.3);
+}
+
+.skill[data-category="programming"] {
+    border-color: rgba(155, 89, 182, 0.3);
+}
+
+.skill[data-category="data"] {
+    border-color: rgba(26, 188, 156, 0.3);
+}
+
+.skill[data-category="deployment"] {
+    border-color: rgba(231, 76, 60, 0.3);
+}
+
+/* Data background element */
+.data-background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.05;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Section title improvements (if in the same file) */
+.section-title h2 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: center;
+    /* Added text shadow for better visibility */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.section-title .underline {
+    height: 4px;
+    width: 80px;
+    background: linear-gradient(to right, var(--secondary-color), var(--tertiary-color));
+    margin: 0 auto 2rem;
+    border-radius: 2px;
+}
+
+/* Dark mode enhancements */
+@media (prefers-color-scheme: dark) {
+    .about-text h3,
+    .skills h4 {
+        color: #E2E8F0;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+    
+    .about-text p {
+        color: #CBD5E0;
+    }
+    
+    .skill {
+        background-color: rgba(52, 152, 219, 0.15);
+        border: 1px solid rgba(52, 152, 219, 0.3);
+        color: #E2E8F0;
+    }
+    
+    .section-title h2 {
+        color: #E2E8F0;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* Responsive design */
 @media (max-width: 992px) {
     .about-content {
         flex-direction: column;
+        text-align: center;
+    }
+    
+    .about-img {
+        max-width: 450px;
+        margin: 0 auto;
+    }
+    
+    .about-text h3::after,
+    .skills h4::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .skills {
+        text-align: center;
+    }
+    
+    .skills-container {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .about-img {
+        max-width: 320px;
     }
 }

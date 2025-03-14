@@ -1,0 +1,391 @@
+/* Data Scientist Themed Chatbot */
+#chat-logo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    z-index: 1000;
+    transition: transform var(--transition-normal);
+    overflow: hidden;
+}
+
+#chat-logo::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--tertiary-color) 100%);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+#chat-logo:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-lg);
+}
+
+#chat-logo img {
+    width: 30px;
+    height: 30px;
+    filter: brightness(0) invert(1);
+}
+
+/* Chat Container */
+#chat-container {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 350px;
+    background-color: var(--light-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    z-index: 1000;
+    transition: all var(--transition-normal);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Chat Header */
+#chat-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: #fff;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: var(--heading-font);
+}
+
+.header-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.control-button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    transition: background-color var(--transition-fast);
+}
+
+.control-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Chat Messages */
+#chat-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background-color: var(--light-color);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    max-height: 350px;
+    color: var(--dark-text-color);
+}
+
+/* Message Bubbles */
+.message {
+    margin-bottom: 15px;
+    padding: 12px 15px;
+    border-radius: var(--radius-lg);
+    max-width: 85%;
+    position: relative;
+    animation: fadeIn 0.3s ease;
+    box-shadow: var(--shadow-sm);
+    word-wrap: break-word;
+    line-height: 1.5;
+    font-family: var(--body-font);
+    font-size: 14px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.user-message {
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--tertiary-color) 100%);
+    color: white;
+    margin-left: auto;
+    border-bottom-right-radius: 5px;
+}
+
+.bot-message {
+    background-color: rgba(44, 62, 80, 0.1);
+    color: var(--dark-text-color);
+    margin-right: auto;
+    border-bottom-left-radius: 5px;
+}
+
+.timestamp {
+    font-size: 10px;
+    opacity: 0.7;
+    text-align: right;
+    margin-top: 5px;
+    display: block;
+    font-family: var(--code-font);
+}
+
+/* Typing indicator */
+.typing-indicator {
+    display: none;
+    padding: 12px;
+    background-color: rgba(44, 62, 80, 0.1);
+    border-radius: var(--radius-lg);
+    margin-bottom: 15px;
+    width: 60px;
+    border-bottom-left-radius: 5px;
+}
+
+.typing-indicator span {
+    height: 8px;
+    width: 8px;
+    float: left;
+    margin: 0 1px;
+    background-color: var(--secondary-color);
+    display: block;
+    border-radius: 50%;
+    opacity: 0.4;
+}
+
+.typing-indicator span:nth-of-type(1) {
+    animation: blink 1s infinite 200ms;
+}
+
+.typing-indicator span:nth-of-type(2) {
+    animation: blink 1s infinite 400ms;
+}
+
+.typing-indicator span:nth-of-type(3) {
+    animation: blink 1s infinite 600ms;
+}
+
+@keyframes blink {
+    50% { opacity: 1; }
+}
+
+/* Chat Input */
+#chat-input {
+    display: flex;
+    padding: 12px;
+    background-color: var(--light-color);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#user-input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--radius-full);
+    outline: none;
+    transition: all var(--transition-normal);
+    font-size: 14px;
+    background-color: rgba(255, 255, 255, 0.9);
+    font-family: var(--body-font);
+}
+
+#user-input:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+#send-button {
+    margin-left: 10px;
+    padding: 12px;
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--tertiary-color) 100%);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all var(--transition-normal);
+}
+
+#send-button:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-md);
+}
+
+#send-button:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+    transform: scale(1);
+    box-shadow: none;
+}
+
+/* Suggestion pills */
+.suggestion-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+    padding: 0 5px;
+}
+
+.suggestion-pill {
+    background-color: rgba(52, 152, 219, 0.1);
+    border: 1px solid rgba(52, 152, 219, 0.3);
+    border-radius: var(--radius-full);
+    padding: 8px 15px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    color: var(--secondary-color);
+    font-family: var(--body-font);
+}
+
+.suggestion-pill:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Data visualization effect */
+.data-dots {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 3px;
+}
+
+.data-dots span {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: var(--tertiary-color);
+    opacity: 0.7;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+    #chat-messages {
+        background-color: var(--dark-color);
+    }
+    
+    #chat-container {
+        background-color: var(--dark-color);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    #chat-input {
+        background-color: var(--dark-color);
+    }
+    
+    #user-input {
+        background-color: rgba(255, 255, 255, 0.05);
+        color: var(--text-color);
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .bot-message {
+        background-color: rgba(255, 255, 255, 0.08);
+        color: var(--text-color);
+    }
+    
+    .suggestion-pill {
+        background-color: rgba(52, 152, 219, 0.2);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    #chat-container {
+        width: calc(100% - 40px);
+        right: 20px;
+        bottom: 80px;
+    }
+    
+    #chat-logo {
+        width: 50px;
+        height: 50px;
+    }
+    
+    #chat-logo img {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+
+
+/* Add these CSS rules to the bottom of your chatbot.css file */
+
+/* Fix for transparent backgrounds */
+#chat-container {
+    background-color: #FFFFFF; /* Solid white background instead of var(--light-color) */
+}
+
+#chat-messages {
+    background-color: #FFFFFF; /* Solid white background */
+}
+
+#chat-input {
+    background-color: #F5F7FA; /* Light gray background */
+}
+
+.bot-message {
+    background-color: #F0F2F5; /* Light gray background instead of rgba(44, 62, 80, 0.1) */
+}
+
+.typing-indicator {
+    background-color: #F0F2F5; /* Light gray background instead of rgba(44, 62, 80, 0.1) */
+}
+
+.suggestion-pill {
+    background-color: #E1F0FA; /* Light blue background instead of rgba(52, 152, 219, 0.1) */
+}
+
+/* Dark mode fixes */
+@media (prefers-color-scheme: dark) {
+    #chat-messages {
+        background-color: #2D3748; /* Solid dark background */
+    }
+    
+    #chat-container {
+        background-color: #2D3748; /* Solid dark background */
+    }
+    
+    #chat-input {
+        background-color: #1A202C; /* Darker background */
+    }
+    
+    #user-input {
+        background-color: #4A5568; /* Darker input background instead of rgba(255, 255, 255, 0.05) */
+    }
+    
+    .bot-message {
+        background-color: #4A5568; /* Darker message background instead of rgba(255, 255, 255, 0.08) */
+    }
+    
+    .suggestion-pill {
+        background-color: #2C4A7A; /* Darker blue for pills instead of rgba(52, 152, 219, 0.2) */
+    }
+}
