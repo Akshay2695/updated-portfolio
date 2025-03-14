@@ -1,149 +1,9 @@
-// // JavaScript for Chatbot Functionality
-// document.addEventListener('DOMContentLoaded', function() {
-//     const chatLogo = document.getElementById('chat-logo');
-//     const chatContainer = document.getElementById('chat-container');
-//     const chatMessages = document.getElementById('chat-messages');
-//     const userInput = document.getElementById('user-input');
-//     const sendButton = document.getElementById('send-button');
-//     const minimizeButton = document.getElementById('minimize-button');
-//     const closeButton = document.getElementById('close-button');
-//     const typingIndicator = document.getElementById('typing-indicator');
-
-//     // Toggle Chat UI Visibility
-//     chatLogo.addEventListener('click', () => {
-//         if (chatContainer.style.display === 'none' || chatContainer.style.display === '') {
-//             chatContainer.style.display = 'flex'; // Show chat UI
-//         } else {
-//             chatContainer.style.display = 'none'; // Hide chat UI
-//         }
-//     });
-
-//     // Minimize button functionality
-//     minimizeButton.addEventListener('click', () => {
-//         chatContainer.style.display = 'none'; // Hide chat UI
-//     });
-
-//     // Close button functionality
-//     closeButton.addEventListener('click', () => {
-//         chatContainer.style.display = 'none'; // Hide chat UI
-//     });
-
-//     // Function to add a message to the chat
-//     function addMessage(message, isUser) {
-//         const messageElement = document.createElement('div');
-//         messageElement.classList.add('message', isUser ? 'user-message' : 'bot-message');
-//         messageElement.textContent = message;
-        
-//         // Add timestamp
-//         const timestamp = document.createElement('span');
-//         timestamp.classList.add('timestamp');
-//         timestamp.textContent = getCurrentTime();
-//         messageElement.appendChild(timestamp);
-        
-//         chatMessages.appendChild(messageElement);
-//         chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll to the latest message
-//     }
-
-//     // Get current time in 12-hour format
-//     function getCurrentTime() {
-//         const now = new Date();
-//         return `Today, ${now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
-//     }
-
-//     // Enable/disable send button based on input field
-//     userInput.addEventListener('input', () => {
-//         sendButton.disabled = userInput.value.trim() === '';
-//     });
-
-//     // Function to send a message to the proxy server
-//     async function sendMessage() {
-//         const message = userInput.value.trim();
-//         if (!message) return; // Ignore empty messages
-
-//         // Add the user's message to the chat
-//         addMessage(message, true);
-//         userInput.value = ''; // Clear the input field
-//         sendButton.disabled = true;
-
-//         // Show typing indicator
-//         typingIndicator.style.display = 'block';
-//         chatMessages.scrollTop = chatMessages.scrollHeight;
-
-//         try {
-//             // Simulate network delay for demo/testing purposes
-//             await new Promise(resolve => setTimeout(resolve, 1500));
-
-//             // Replace this with your actual API endpoint
-//             // If you don't have a backend, you can implement simple responses here
-//             // const response = await fetch('https://your-proxy-server-url/api/chat', {
-//             //     method: 'POST',
-//             //     headers: {
-//             //         'Content-Type': 'application/json',
-//             //     },
-//             //     body: JSON.stringify({
-//             //         text: message,
-//             //     }),
-//             // });
-//             // const data = await response.json();
-            
-//             // For demo purposes - replace with actual API call
-//             const botResponse = getBotResponse(message);
-            
-//             // Hide typing indicator
-//             typingIndicator.style.display = 'none';
-            
-//             // Add the bot's message to the chat
-//             addMessage(botResponse, false);
-//         } catch (error) {
-//             console.error('Error fetching response:', error);
-//             typingIndicator.style.display = 'none';
-//             addMessage('Error: Unable to fetch response. Please try again later.', false);
-//         }
-//     }
-
-//     // Simple response function for demo purposes
-//     function getBotResponse(message) {
-//         message = message.toLowerCase();
-        
-//         if (message.includes('project') || message.includes('projects')) {
-//             return "I've worked on several projects including web development, mobile apps, and data analysis. You can check them out in the Projects section of my portfolio.";
-//         } else if (message.includes('contact') || message.includes('email') || message.includes('phone')) {
-//             return "You can reach me through the Contact form on this website, or directly at your@email.com.";
-//         } else if (message.includes('skills') || message.includes('experience')) {
-//             return "My skills include JavaScript, HTML/CSS, React, Node.js, and more. Check out the Experience section for details about my work history.";
-//         } else if (message.includes('hi') || message.includes('hello') || message.includes('hey')) {
-//             return "Hello there! How can I help you with information about my portfolio?";
-//         } else {
-//             return "Thanks for your message. Feel free to explore my portfolio or ask specific questions about my projects, skills, or contact information.";
-//         }
-//     }
-
-//     // Event Listeners
-//     sendButton.addEventListener('click', sendMessage);
-//     userInput.addEventListener('keypress', (e) => {
-//         if (e.key === 'Enter') {
-//             sendMessage();
-//         }
-//     });
-
-//     // Handle suggestion pills
-//     document.querySelectorAll('.suggestion-pill').forEach(pill => {
-//         pill.addEventListener('click', () => {
-//             userInput.value = pill.textContent;
-//             sendButton.disabled = false;
-//             sendMessage();
-//         });
-//     });
-// });
-
-
 // js/modules/chatbot.js
 
 import { CONFIG } from './config.js';
 
 /**
  * Portfolio Chatbot with API Integration
- * Connects to your Vercel serverless function for intelligent responses
  */
 
 export function initializeChatbot() {
@@ -218,7 +78,7 @@ export function initializeChatbot() {
     }
 
     // Chat UI Visibility - default to hidden
-    chatContainer.style.display = 'none';
+    chatContainer.style.display = 'flex';
 
     // Toggle Chat UI Visibility
     chatLogo.addEventListener('click', () => {
