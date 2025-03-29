@@ -21,9 +21,9 @@ export const CONFIG = {
     CHATBOT: {
         INITIAL_MESSAGE: "Hi! I'm Aksh-AI 2.0. Akshay's AI assistant. How can I help you today?",
         SUGGESTIONS: [
-            "Tell me about your projects",
-            "What are your skills?",
-            "How can I get in touch with you?"
+            "Tell me about Akshay's projects",
+            "What are Akshay's skills?",
+            "How can I get in touch with Akshay?"
         ]
     }
 };
